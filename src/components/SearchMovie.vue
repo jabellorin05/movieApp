@@ -3,7 +3,7 @@
 
     <h1>Search your movie</h1>
     <input type="text" placeholder="Search movie" v-model="searchName"/>
-    <button v-on:click="fetchData">Search</button>
+    <button  class="btn btn-primary" v-on:click="fetchData">Search</button>
 
     
    <!-- conditionally render the ShowData component only if the movieList array has at least one item. -->
@@ -73,7 +73,6 @@ export default {
 
 
 <style>
-
 
 
 
