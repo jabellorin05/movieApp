@@ -1,15 +1,23 @@
 <template>
+    
+
     <h1>Search your movie</h1>
     <input type="text" placeholder="Search movie" v-model="searchName"/>
     <button v-on:click="fetchData">Search</button>
+
+    
+   
+
+    <ShowData :movieName="movieList"/>
+  
 </template>
 <script>
-
+import ShowData from './ShowData.vue';
 
 export default {
     name: 'SearchMovie',
     components: {
-        
+        ShowData,
     },data(){
         return{
           
@@ -35,8 +43,8 @@ export default {
                 }
                 return response.json();
             }).then(data=>{
-                console.log(data);
-                this.movieList = data;
+                //console.log(data);
+                this.movieList = data.Search;
 
             }).catch(error=>{
                 console.log('error getting the data with the api'+error);
@@ -45,12 +53,16 @@ export default {
         
 }
     
-}
+},
+
 }
 
 </script>
 
 
 <style>
+
+
+
 
 </style>
