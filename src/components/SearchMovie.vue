@@ -1,20 +1,19 @@
 <template>
-    
+    <div>
+        <h1>Search your movie</h1>
+        <input type="text" placeholder="Search movie" v-model="searchName"/>
+        <button  class="btn btn-primary"  @click="fetchData">Search</button>
 
-    <h1>Search your movie</h1>
-    <input type="text" placeholder="Search movie" v-model="searchName"/>
-    <button  class="btn btn-primary" v-on:click="fetchData">Search</button>
-
-    
-   <!-- conditionally render the ShowData component only if the movieList array has at least one item. -->
-    <div v-if="movieList.length > 0">
-        <ShowData :movieName="movieList"/>
-      
+        
+       <!-- conditionally render the ShowData component only if the movieList array has at least one item. -->
+        <div v-if="movieList.length > 0">
+            <ShowData :movieName="movieList"/>
+          
+        </div>
+        <div v-else>
+            <p>No movie found</p>
+        </div>
     </div>
-    <div v-else>
-        <p>No movie found</p>
-    </div>
-  
 </template>
 <script>
 import ShowData from './ShowData.vue';
@@ -51,7 +50,7 @@ export default {
            }
            return response.json();
        }).then(data=>{
-           //console.log(data);
+           console.log(data);
            this.movieList = data.Search;
            this.isLoading = false;
 
@@ -74,6 +73,9 @@ export default {
 
 <style>
 
-
+   button{
+        margin-left: 10px;
+        padding: 1px;
+    } 
 
 </style>

@@ -2,8 +2,13 @@
     <div class="container">
         <div v-for="(item, index) in movieName" :key="index">
         <h3>{{item.Title}}</h3>
-        <img :src="item.Poster" alt="movie poster" />
+        <img :src="item.Poster" alt="movie poster" class=" img-fluid rounded shadow-lg"/>
         <p>{{item.Year}}</p>
+        
+        <div class="container-button">
+            <button v-on:click="ShowDetails(item)" class="btn btn-info">Detail</button>
+            <!-- <RouterLink :to="{name: 'MovieDetails', params:{id:item.Title}}"></RouterLink> -->
+        </div>
 
    </div>
 
@@ -22,7 +27,11 @@ export default {
           
         }
     },methods:{
-       
+            ShowDetails(item){
+             
+                this.$router.push({ name: 'MovieDetails', params: { id: item.Title } });
+
+            }
  
     },props:{
         movieName:{
@@ -49,4 +58,10 @@ export default {
     
   
 }   
+
+.container-button{
+    display: inline-block;
+justify-content: flex-end;
+    
+}
 </style>

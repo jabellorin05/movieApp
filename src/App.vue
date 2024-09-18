@@ -1,7 +1,9 @@
 <template>
 <div>
 <SearchMovie />
-  
+<transition name="fade">
+      <router-view></router-view>
+    </transition>
 </div>
 </template>
 
